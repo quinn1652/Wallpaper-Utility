@@ -8,9 +8,11 @@ import random
 #optional argument for collection
 parser = argparse.ArgumentParser()
 parser.add_argument('-c','--collection', required=False)
+parser.add_argument('-d','--destination', required=True)
 args = parser.parse_args()
 
 catStr = args.collection
+dest = args.destination
 
 if catStr is not None:
     url = 'https://unsplash.com/search/photos/'+catStr
@@ -53,9 +55,8 @@ dic = dict(zip(links, titles))
 links = iter(dic)
 
 #empty folder
-folder = 'C:/Users/Quinn/Pictures/Wallpapers/'
-for the_file in os.listdir(folder):
-    file_path = os.path.join(folder, the_file)
+for the_file in os.listdir(dest):
+    file_path = os.path.join(dest, the_file)
     try:
         if os.path.isfile(file_path):
             os.unlink(file_path)
@@ -67,7 +68,7 @@ for the_file in os.listdir(folder):
 i=0
 for l in dic.keys():
     if dic[l] == 'Download photo':
-        f=open(folder+str(i)+".jpg", 'wb')
+        f=open(dest+str(i)+".jpg", 'wb')
         f.write(ul.urlopen(l).read())
         f.close()
         i+=1
