@@ -6,3 +6,7 @@ Will pick random category if none is specified.
 arguments:
 python3 get_wp.py -d "C:/Example/Destination/With/Slash/at/End/" [-c "optional category"]
 
+dependencies/imports:
+urllib
+lxml
+
