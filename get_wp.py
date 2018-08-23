@@ -68,7 +68,7 @@ for the_file in os.listdir(dest):
 i=0
 for l in dic.keys():
     if dic[l] == 'Download photo':
-        f=open(dest+str(i)+".jpg", 'wb')
+        f=open(dest+"\\"+str(i)+".jpg", 'wb')
         f.write(ul.urlopen(l).read())
         f.close()
         i+=1
